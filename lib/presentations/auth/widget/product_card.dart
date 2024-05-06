@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kasir/presentations/home/models/product_model.dart';
+import 'package:flutter_kasir/core/extensions/int_ext.dart';
+import 'package:flutter_kasir/data/models/response/product_response_model.dart';
 
 
 import '../../../core/components/spaces.dart';
@@ -7,7 +8,7 @@ import '../../../core/constants/colors.dart';
 
 
 class ProductCard extends StatelessWidget {
-  final ProductModel data;
+  final Product data;
   final VoidCallback onCartButton;
 
   const ProductCard({
@@ -58,7 +59,7 @@ class ProductCard extends StatelessWidget {
           ),
           const SpaceHeight(8.0),
           Text(
-            data.category.value,
+            data.category,
             style: const TextStyle(
               color: AppColors.grey,
               fontSize: 12,
@@ -70,7 +71,7 @@ class ProductCard extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  data.priceFormat,
+                  data.price.currencyFormatRp,
                   style: const TextStyle(
                     fontWeight: FontWeight.w700,
                   ),
